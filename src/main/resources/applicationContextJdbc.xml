@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+                
+   
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="username" value="corsojava" />
+        <property name="password" value="corsojava" />
+        <property name="url" value="jdbc:mysql://localhost:3306/ecommerce" />
+    </bean>
+    
+    <bean id="serviziDB" class="it.cspnet.ecommerce.servizi.ServiziDB" >
+        <property name="prodottiDAO" ref="prodottiDAOspring"/>
+        <property name="acquistiDAO" ref="acquistiDAOspring"/>
+        <property name="voceAcquistoDAO" ref="voceAcquistoDAOspring"/>
+        <property name="categorieDAO" ref="categorieDAOspring"/>
+    </bean>
+    
+    <bean id="prodottiDAOspring" class="it.cspnet.ecommerce.data.ProdottiDAOspringJdbcImpl">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    
+    <bean id="acquistiDAOspring" class="it.cspnet.ecommerce.data.AcquistiDAOspringJdbcImpl">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    
+    <bean id="voceAcquistoDAOspring" class="it.cspnet.ecommerce.data.VoceAcquistoDAOspringJdbcImpl">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    
+    <bean id="categorieDAOspring" class="it.cspnet.ecommerce.data.CategorieDAOspringJdbcImpl">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+</beans>

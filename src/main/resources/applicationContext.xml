@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+    
+    
+    <bean id="serviziDB" class="it.cspnet.ecommerce.servizi.ServiziDB" >
+        <property name="prodottiDAO" ref="prodottiDAOjdbcImpl"/>
+        <property name="acquistiDAO" ref="acquistiDAOjdbcImpl"/>
+        <property name="voceAcquistoDAO" ref="voceAcquistoDAOjdbcImpl"/>
+    </bean>
+      
+    <bean id="prodottiDAOjdbcImpl" class="it.cspnet.ecommerce.data.ProdottiDAOjdbcImpl">
+        <property name="dbUserName" value="corsojava"/>
+        <property name="dbPassword" value="corsojava"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/ecommerce"/>
+    </bean>
+    
+    <bean id="acquistiDAOjdbcImpl" class="it.cspnet.ecommerce.data.AcquistiDAOjdbcImpl">
+        <property name="dbUserName" value="corsojava"/>
+        <property name="dbPassword" value="corsojava"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/ecommerce"/>
+    </bean>
+    
+    <bean id="voceAcquistoDAOjdbcImpl" class="it.cspnet.ecommerce.data.VoceAcquistoDAOjdbcImpl">
+        <property name="dbUserName" value="corsojava"/>
+        <property name="dbPassword" value="corsojava"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/ecommerce"/>
+    </bean>
+    
+    
+          
+</beans>
