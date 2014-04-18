@@ -21,10 +21,9 @@ public class AcquistiDAOspringJdbcImpl extends JdbcDaoSupport implements Acquist
 
             @Override
             public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-                Timestamp timeStamp = new Timestamp(acquisto.getData().getTime());
                 PreparedStatement ps = con.prepareStatement(JdbcUtility.ADD_ACQUISTO, Statement.RETURN_GENERATED_KEYS);
                 ps.setFloat(1, acquisto.getCostoTotale());
-                ps.setTimestamp(2, timeStamp);
+                ps.setTimestamp(2, new Timestamp(acquisto.getData().getTime()));
                 return ps;
             }
         }, key);
